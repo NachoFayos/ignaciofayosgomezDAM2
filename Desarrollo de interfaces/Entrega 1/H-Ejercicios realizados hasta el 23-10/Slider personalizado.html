@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <input type="range" min="0" max="10" value="0"> 
+    <style>
+        
+                                                       /* SLIDER PREDETERMINADO */
+        
+      input[type="range"] {
+        -webkit-appearance: none;                   /* Desahilitamos el estilo predeterminado */
+        appearance: none;
+        background: transparent;                    /* Introducimos un fondo transparente */
+        cursor: pointer;                            /* Añadimos mano pointer */
+        width: 232px;                               /* Anchura de 232px */
+        outline: none;                              /* Quitamos el borde de alrededor */
+      }
+        
+
+                                                       /* SLIDER TIPO FOCUS */
+        
+      input[type="range"]:focus {
+        outline: none;                              /* Quitamos el borde de alrededor */
+      }
+        
+        
+                                                       /* CARRIL DE BASE */
+        
+      input[type="range"]::-webkit-slider-runnable-track {
+        background-color: darkred;                 /* Añadimos un fondo rojo oscuro */
+        border-radius: 80px;                       /* Quiero un radio redondeado */
+        height: 16px;                              /* Altura de 16px */
+        outline: none;                             /* Quitamos el borde de alrededor */
+      }
+        
+
+                                                      /* SLIDER CAJA */
+        
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;                  /* Desahilitamos el estilo predeterminado */
+        appearance: none;
+        margin-top: 0px;                           /* Margen por arriba */
+        background-color: red;                     /* Añadimos un fondo rojo */
+        border-radius: 16px;                       /* Quiero un radio redondeado */
+        height: 16px;                              /* Altura de 16px */
+        width: 30%;                                /* Anchura del 30% */
+      }
+
+    
+      input[type="range"]:active::-webkit-slider-thumb {
+        box-shadow: 0px 0px 10px 0px black;        /* Añadimos una sombra que se hace visible cuando clicamos */
+      }
+
+      
+      input[type="range"]:focus::-webkit-slider-thumb:active {
+        box-shadow: 0px 0px 10px 0px black;        /* Se mantiene la sombra durante el focus (pero solo mientras está en uso) */
+      }
+      
+      
+      input[type="range"]::-webkit-slider-thumb {
+        transition: box-shadow 0.2s ease;          /* Añadimos una animación de transición */
+      }
+
+    </style>
+  </body>
+</html>

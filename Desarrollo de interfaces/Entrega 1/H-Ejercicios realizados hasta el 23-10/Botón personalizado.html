@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <style>
+    body{
+        transition:all 1s;                              /* Añadimos una animación de transición */
+        text-align: center;                             /* Alineamos el texto */
+        padding-top: 20px;                              /* Usamos padding para ubicar */
+    }
+        
+        
+    button{
+        width:100px;                                    /* Anchura del botón  */
+        height:25px;                                    /* Altura del botón */
+        border:none;                                    /* Le quito el border que HTML le pone por defecto */
+        border-radius:5px;                              /* Quiero un radio redondeado */
+        box-shadow: 0px 5px 0px 0px #C0392B;            /* Añadimos una sombra */
+        background: #E74C3C;                            /* El color del texto es rojo claro */
+        text-shadow: 0px 1px rgba(0, 0, 0, 0.2);        /* Añadimos una sombra al texto */
+        font-family: fantasy;                           /* Añadimos tipo de fuente */                  
+        cursor: pointer;                                /* Añadimos mano pointer */
+    }
+        
+        
+    button:hover{
+        background: #ff5242;                             /* Añadimos un color de fondo que se activa cuanto nos posamos */
+    }
+        
+        
+    button:active{
+        box-shadow: 0px 2px 0px 0px #C0392B;             /* Añadimos una sombra que se hace visible cuando clicamos */
+    }
+        
+        
+    </style>
+  </head>
+  <body>
+    <button>                                             
+        <div id="brillo"></div>                         
+            Púlsame
+    </button>
+  </body>
+</html>
