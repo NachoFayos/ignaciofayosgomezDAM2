@@ -1,0 +1,60 @@
+body{
+    background-image: url("img/fondologin.png");
+
+}
+#formlogin{
+    box-shadow: 0px 0px 20px;
+    border-radius: 20px;
+    width:300px;
+    height:370px;
+    margin:auto;
+    margin-top: 140px;
+    background: none;
+   
+    padding:30px;
+    text-align:center;
+}
+#logo{
+    width:80%;
+    margin-top: -20px;
+
+}
+input{
+    
+    border-radius: 5px;
+    font-family:sans-serif;
+    text-align:center;
+    font-size: 16px;
+    width:100%;
+    padding:10px 0px;
+    margin-bottom:30px;
+    margin-top:-10px;
+   
+}
+#usuario{
+     background-image: url('img/iconousuario.png');
+     background-repeat: no-repeat;
+     background-position: 0px -3px;
+    
+}
+#contrasena{
+     background-image: url('img/iconocontrasena.png');
+     background-repeat: no-repeat;
+     background-position: -9px -11px;
+    
+}
+button{
+    border-radius: 10px;
+    font-family:sans-serif;
+    width:30%;
+    padding:10px 0px;
+    margin-bottom:10px;
+    margin-top:-15px;
+}
+
+
+
+
+
+
+
