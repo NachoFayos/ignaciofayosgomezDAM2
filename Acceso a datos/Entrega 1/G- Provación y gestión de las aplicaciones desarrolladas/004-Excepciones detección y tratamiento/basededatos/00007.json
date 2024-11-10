@@ -1,0 +1,8 @@
+{
+    "nombre": "Rodrigo",
+    "apellidos": "Quijada Pereira",
+    "emails": {
+        "personal": "rodri@gmail.com",
+        "profesional": "rodri@empresa.com"
+    }
+}
