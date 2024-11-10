@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body, html {
   font-family: sans-serif;                        /* Tipo de fuente */
   background-image: url("img/fondo.jpg");         /* Imagen de fondo de la página */
@@ -112,3 +113,119 @@ main section table tbody tr:nth-child(odd) {
 main section table tbody tr:nth-child(even) {     /* Color de fondo de la fila par de los datos */
   background: #d6d6d6;
 }
+=======
+body, html {
+  font-family: sans-serif;                        /* Tipo de fuente */
+  background-image: url("img/fondo.jpg");         /* Imagen de fondo de la página */
+  background-repeat: no-repeat;                   /* Evita que la imagen de fondo se repita */
+  background-size: cover;                         /* Escala la imagen de fondo para cubrir toda la ventana */
+  background-position: center;                    /* Centra la imagen de fondo */
+  padding: 0;                                     /* La imagen de fondo comenzará justo en los borden de la página */
+  margin: 0;                                      /* Elimina el margen, lo uso para la imagen de fondo */
+  height: 100%;                                   /* Ocupa la altura máxima */
+  width: 100%;                                    /* Ocupa todo el ancho */
+  transition: all 1s;                             /* Animación de transición */
+  overflow: hidden;                               /* Asegura que no haya barras de desplazamiento inesperadas */
+}
+
+header {
+  display: flex;                                  /* Visualización flexible?? */
+  justify-content: center;                        /* Centra el nav horizontalmente */
+  align-items: center;                            /* Alinea verticalmente el contenido */
+  padding: 10px;                                  /* Espaciado interno */
+  width: 100%;                                    /* Ocupa todo el ancho disponible */
+  background: radial-gradient(white, black);      /* Fondo del header gradiente de dentro hacia afuera */
+  border-radius: 10px;                            /* Bordes redondeados */
+  box-shadow: 10px 0px 104px 7px black;           /* Añado una sombra */
+  margin: 20px auto;                              /* Añado un margen para separarlo del contenido superior */
+  max-width: 65%;                                 /* Limito el ancho del header */
+}
+
+header nav {
+  display: flex;                                  /* Visualización flexible?? */
+  justify-content: center;                        /* Centra los ítems dentro del nav */
+}
+
+nav ul {
+  list-style-type: none;                          /* Sin tipo de marcador */
+  display: flex;                                  /* Coloca los elementos en fila */
+  padding: 5px;                                   /* Ubicación del nav */
+  margin: 0px;                                    /* 0 márgen */
+  align-items: center;                            /* Centra verticalmente los ítems del nav */
+}
+
+nav ul li {
+  padding: 15px;                                  /* Ubicación de la lista */
+  cursor: pointer;                                /* Transformación puntero en mano */
+  box-sizing: border-box;                         /* Caja para cada elemento de la lista */
+  border: none;                                   /* Sin borde */
+  border-radius: 5px;                             /* Bordes redondeados */
+  box-shadow: 0px 5px 0px 0px #848484;            /* Añado una sombra a la caja */
+  color: black;                                   
+  background: #b0b0b0;                            /* Color de fondo de la caja */
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);        /* Añado sombra al texto */
+  text-transform: uppercase;                      /* Fuente a mayúsculas */
+  margin-right: 30px;                             /* Ajusta el espacio entre ítems */
+}
+
+nav ul li:last-child {
+  margin-right: 0;                                /* Elimina el margen del último elemento */
+}
+
+nav ul li:hover {                                 /* Añadimos un color de fondo que se activa cuanto nos posamos */
+  background: #cdcdcd;
+}
+nav ul li:active{                                 /* Añadimos una sombra que se hace visible cuando clicamos */
+        box-shadow: 0px 2px 0px 0px #848484; 
+}
+main {
+  display: flex;                                  /* Visualización flexible?? */
+  justify-content: center;                        /* Centra el main horizontalmente */
+  align-items: stretch;                           /* Los elemento se estiran para caber en el contenedor */
+  height: 100%;                                   /* Ocupa la altura máxima */
+  width: 100%;                                    /* Ocupa todo el ancho disponible */
+}
+
+main section {
+  width: 80%;                                     /* Establecemos el ancho deseado */
+  background: #cfcdcd;                            /* Color de fondo de la caja */
+  height: 100%;                                   /* Ocupa la altura máxima */
+  border-radius: 20px 20px 0px 0px;               /* Bordes redondeados */
+  color: black;
+  padding: 20px;                                  /* Ubicación del section */
+  margin-top: 20px;                               /* Añade un margen superior para separar el header */
+  background-image: url("img/fondomain.jpg");     /* Imagen de fondo */
+  background-repeat: no-repeat;                   /* Evita que la imagen se repita */
+  background-size: cover;                         /* Escala la imagen para que cubra todo el área */
+  background-position: center;                    /* Centra la imagen */
+}
+
+main section table {
+  width: 100%;                                     /* La tabla ocupa todo el ancho disponible??? */
+}
+
+main section table thead {
+  background: #999999;                             /* Color de fondo de la caja de los nombres */
+  color: black;
+}
+
+main section table thead tr th:first-child {
+  border-radius: 20px 0px 0px 0px;                 /* Bordes redondeados del primer borde */
+}
+
+main section table thead tr th:last-child {        /* Bordes redondeados del último borde */
+  border-radius: 0px 20px 0px 0px;
+}
+
+main section table td, main section table th {
+  padding: 5px;                                   /* Espacio ocupado por las filas de la tabla */
+}
+
+main section table tbody tr:nth-child(odd) {
+  background: #eeeeee;                            /* Color de fondo de la fila impar de los datos */
+}
+
+main section table tbody tr:nth-child(even) {     /* Color de fondo de la fila par de los datos */
+  background: #d6d6d6;
+}
+>>>>>>> df403c8 (Actualización de git)

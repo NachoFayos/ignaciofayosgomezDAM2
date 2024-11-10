@@ -1,0 +1,12 @@
+{
+    "nombre": "Nacho",
+    "apellidos": "Fayos G\u00f3mez",
+    "emails": {
+        "personal": [
+            "nachofayosg@gmail.com"
+        ],
+        "profesional": [
+            "info@nacho.com"
+        ]
+    }
+}

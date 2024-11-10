@@ -1,0 +1,2 @@
+<nombre_del_archivo_grande> filter=lfs diff=lfs merge=lfs -text
+Acceso[[:space:]]a[[:space:]]datos filter=lfs diff=lfs merge=lfs -text

@@ -62,3 +62,4 @@ selector_video_salida.pack(padx=50,pady=20);
 tk.Button(marco,text="Comenzamos",command=procesar).pack(padx=50,pady=20);
 
 ventana.mainloop()
+

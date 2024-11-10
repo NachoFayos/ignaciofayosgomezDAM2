@@ -14,4 +14,4 @@ button = tk.Button(marco, text="Púlsame")
 button.grid(row=2, column=3, columnspan=2)
 
 ventana.mainloop()
-s
+
