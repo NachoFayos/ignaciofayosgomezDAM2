@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="StyleSheet" href="estiloinicio.css">
+  <title>Pantalla de Inicio</title>
+</head>
+<body>
+  <div id="pantallaInicio">
+    <h1>Bienvenido a Pixel Marine</h1>
+    <p>¡Prepárate para vivir una aventura emocionante en el océano!</p>
+    <button id="botonInicio">Iniciar Juego</button>
+  </div>
+
+  <script>
+    document.getElementById("botonInicio").addEventListener("click", () => {
+      window.location.href = "juego.html"; 
+    });
+  </script>
+</body>
+</html>

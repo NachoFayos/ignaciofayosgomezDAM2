@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Three.js</title>
+        <style>
+            body, html {
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+            }
+            canvas {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="importmap">
+        {
+          "imports": {
+            "three": "../build/three.module.js",
+            "three/addons/": "./jsm/"
+          }
+        }
+        </script>
+    <script type="module">
+        import * as THREE from "three";
+        import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+        const escena = new THREE.Scene();
+            escena.background = new THREE.Color(0xcccccc);
+
+        const camara = new THREE.PerspectiveCamera(                      // Cámara alejada y a ras del suelo
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+        camara.position.set(0, 0.5, 20);                                 // Coloco la cámara alejada en Z
+        camara.lookAt(0, 0.5, 0);                                        // Miro hacia el laberinto
+
+        const representador = new THREE.WebGLRenderer();
+            representador.setSize(window.innerWidth, window.innerHeight);
+            representador.shadowMap.enabled = true;
+            document.body.appendChild(representador.domElement);
+
+        // Cargar texturas
+        const cargaTextura = new THREE.TextureLoader();
+        const texturasuelo = cargaTextura.load("fondo1.jpg");
+        const texturaesfera = cargaTextura.load("fondo1.jpg");
+
+        // Crear plano (suelo)
+        const geometriaplano = new THREE.PlaneGeometry(200, 200);
+        const materialplano = new THREE.MeshStandardMaterial({ map: texturasuelo });
+        const plano = new THREE.Mesh(geometriaplano, materialplano);
+            plano.rotation.x = -Math.PI / 2;
+            plano.receiveShadow = true;
+            escena.add(plano);
+
+        const geometriaentornoesferico = new THREE.SphereGeometry(100, 64, 32);  // Fondo esférico
+        const materialesferaentorno = new THREE.MeshBasicMaterial({
+            map: texturaesfera,
+            side: THREE.BackSide,
+        });
+        const esferaentorno = new THREE.Mesh(
+            geometriaentornoesferico,
+            materialesferaentorno
+        );
+            escena.add(esferaentorno);
+
+        const luzAmbiental = new THREE.AmbientLight(0xffffff, 1.0);               // Añadir luz ambiental más intensa
+            escena.add(luzAmbiental);
+
+        // Añadir luz direccional
+        const luzDireccional = new THREE.DirectionalLight(0xffffff, 1.0);         // Añadir luz direccional
+            luzDireccional.position.set(5, 10, 5);
+            luzDireccional.castShadow = true;
+            escena.add(luzDireccional);
+
+            luzDireccional.shadow.mapSize.width = 1024;
+            luzDireccional.shadow.mapSize.height = 1024;
+            luzDireccional.shadow.camera.near = 0.5;
+            luzDireccional.shadow.camera.far = 200;
+
+        const loader2 = new GLTFLoader();                                         // Cargar laberinto
+            loader2.load(
+                "laberinto1.glb", 
+                function (gltf) {
+                const laberinto = gltf.scene;
+                    laberinto.position.set(0, -0.5, 0);                           // Hunda ligeramente el laberinto en Y
+                    escena.add(laberinto); 
+                    console.log("Modelo cargado correctamente");
+                },
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total) * 100 + "% cargado");    // Progreso
+                },
+                function (error) {
+                    console.error("Error al cargar el modelo GLB", error);       
+                }
+            );
+
+        // VARIABLES DE MOVIMIENTO //
+        let x = 0;
+        let z = 20;                                                                 // Posición inicial alejada
+        let angulo = 0;
+        let paso = 0.1;
+        const incrementoVelocidad = 0.05;
+        const maxPaso = 0.5;
+        const minPaso = 0.1;
+
+        // CONTROLES DE MOVIMIENTO //
+        document.onkeydown = function (e) {
+          if (e.key == "ArrowUp") {
+            x -= Math.sin(angulo) * paso;
+            z -= Math.cos(angulo) * paso;
+          }
+          if (e.key == "ArrowDown") {
+            x += Math.sin(angulo) * paso;
+            z += Math.cos(angulo) * paso;
+          }
+          if (e.key == "ArrowLeft") {
+            angulo += 0.05;
+            paso = Math.min(maxPaso, paso + incrementoVelocidad);
+          }
+          if (e.key == "ArrowRight") {
+            angulo -= 0.05;
+            paso = Math.min(maxPaso, paso + incrementoVelocidad);
+          }
+        };
+
+        document.onkeyup = function (e) {
+          if (e.key == "ArrowLeft" || e.key == "ArrowRight") {
+            paso = Math.max(minPaso, paso - incrementoVelocidad);
+          }
+        };
+
+        // Animación
+        function animar() {
+          camara.position.x = x;
+          camara.position.z = z;
+          camara.rotation.y = angulo;
+
+          representador.render(escena, camara);
+          requestAnimationFrame(animar);
+        }
+
+        animar();
+    </script>
+    </body>
+</html>

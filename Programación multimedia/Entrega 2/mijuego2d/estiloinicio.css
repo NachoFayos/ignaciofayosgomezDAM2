@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('./fondoinicio.jpg') no-repeat center center fixed; /*Corrección para que la imagen de fondo se vea correctamente*/
+  background-size: cover; 
+}
+#pantallaInicio {
+  background-color: rgba(0, 0, 0, 0.6); 
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #FF5733;
+}
+p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+button {
+  font-size: 22px;
+  padding: 10px 20px;
+  background-color: #FF5733;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #C70039;
+}
