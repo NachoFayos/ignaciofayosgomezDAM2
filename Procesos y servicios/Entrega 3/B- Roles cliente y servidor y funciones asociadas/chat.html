@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      section {
+        width: 400px;
+        height: 800px;
+        border: 1px solid grey;
+        overflow-y: scroll;
+      }
+      article {
+        box-sizing: border-box;
+        padding: 20px;
+        background: lightgreen;
+        border-radius: 0px 10px 10px 10px;
+        margin: 10px;
+        width: 80%;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <input id="usuario" placeholder="Introduce tu usuario">
+      <section></section>
+      <input id="mensaje">
+    </main>
+    <script>
+      ///////////////////////////////// BUCLE DE LECTURA ///////////////////////////////////////
+      function bucle() {
+        fetch("http://192.168.1.178:5000/dame") // Realizo una petición para obtener los mensajes
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Error en la respuesta del servidor");
+            }
+            return response.json(); // Convierto la respuesta a JSON
+          })
+          .then(function (datos) {
+            console.log(datos);
+            let seccion = document.querySelector("section"); // Selecciono el contenedor de destino
+            seccion.innerHTML = ""; // Vacío el contenedor
+            datos.forEach(function (dato) {
+              if (dato.usuario && typeof dato.usuario === "string") { // Validar que dato.usuario exista y sea un string
+                let suma = 0; // Creo una suma inicial
+                for (let i = 0; i < dato.usuario.length; i++) {
+                  suma += dato.usuario.charCodeAt(i); // Calcular el color basado en el nombre de usuario
+                }
+                suma %= 255; // Asegurar que el valor esté en un rango válido
+
+                let bloque = document.createElement("article"); // Crear un nuevo artículo
+                let autor = document.createElement("h3"); // Crear el elemento h3
+                autor.textContent = dato.usuario; // Asignar el nombre del usuario
+                let parrafo = document.createElement("p"); // Crear el párrafo
+                parrafo.textContent = dato.mensaje; // Asignar el mensaje
+                bloque.appendChild(autor); // Agregar el autor al bloque
+                bloque.appendChild(parrafo); // Agregar el mensaje al bloque
+                seccion.appendChild(bloque); // Agregar el bloque a la sección
+                bloque.style.background = "hsl(" + suma + ",127%,50%)"; // Cambiar el color del bloque
+              } else {
+                console.warn("Mensaje inválido:", dato); // Mostrar advertencia para datos inválidos
+              }
+            });
+            seccion.scrollTop = 100000000000; // Hacer scroll al final
+          })
+          .catch(function (error) {
+            console.error("Error al obtener mensajes:", error); // Manejar errores en la solicitud
+          });
+
+        clearTimeout(temporizador); // Detengo el temporizador
+        temporizador = setTimeout("bucle()", 1000); // Vuelvo a arrancar el bucle dentro de un segundo
+      }
+
+      ///////////////////////////////// ENVÍO DE MENSAJES ///////////////////////////////////////
+      let entrada = document.querySelector("#mensaje"); // Selecciono la entrada
+      let usuario = document.querySelector("#usuario"); // Selecciono el usuario
+      entrada.onchange = function () {
+        if (usuario.value.trim() === "" || this.value.trim() === "") {
+          console.warn("Usuario o mensaje vacío, no se envía"); // Validar entradas vacías
+          return;
+        }
+        fetch(
+          "http://192.168.1.178:5000/toma?mensaje=" +
+            encodeURI(this.value) +
+            "&usuario=" +
+            encodeURI(usuario.value)
+        ) // Enviar el mensaje
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Error en la respuesta al enviar mensaje");
+            }
+            return response.json();
+          })
+          .catch(function (error) {
+            console.error("Error al enviar mensaje:", error); // Manejar errores
+          });
+
+        this.value = ""; // Vaciar la entrada de texto
+      };
+
+      ///////////////////////////////// PONGO EL BUCLE EN MARCHA ///////////////////////////////////////
+      var temporizador = setTimeout("bucle()", 1000); // Lanzar la primera ejecución del bucle
+    </script>
+  </body>
+</html>
