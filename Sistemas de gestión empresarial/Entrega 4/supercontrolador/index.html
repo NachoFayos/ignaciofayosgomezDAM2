@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>BAT 2 ERP</title>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="estilo.css">
+    <script src="lib/selectjv/selectjv.js"></script>
+    <link rel="stylesheet" href="./lib/selectjv/selectjv.css">
+    <link rel="icon" type="image/png" sizes="399x512" href="../img/logobat.png">
+    
+    <!-- Scripts del ERP -->
+    <script src="js/funciones.js"></script>
+    <script src="js/convierteTipoDato.js"></script>
+    <script src="js/poblarMenuNavegacion.js"></script>
+    <script src="js/pueblaTabla.js"></script>
+    <script src="js/cargaDatosTabla.js"></script>
+    <script src="js/cargaDatosColeccion.js"></script>
+    <script src="comportamiento.js"></script>
+    
+    <!-- Scripts para Gráficos -->
+    <script src="lib/JVGrafica.js"></script>
+    <script src="js/panel.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Supercontrolador</h1>
+        <nav>
+            <button class="boton botonblanco" id="imprimir"><img src="img/iconoimprimir.svg"></button>
+            <button class="boton botonblanco" id="mail"><img src="img/iconocorreo.svg"></button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="panel">
+            <h2>Panel de Control</h2>
+            <div id="graficaProductos"></div>
+            <div id="graficaClientes"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BAT 2 ERP</p>
+    </footer>
+</body>
+</html>
